@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Icons\color-palette.png" />
+    <None Remove="Icons\export.png" />
+    <None Remove="Icons\import.png" />
+    <None Remove="Icons\load.png" />
+    <None Remove="Icons\save-as.png" />
+    <None Remove="Icons\save.png" />
+    <None Remove="Icons\select.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Fluent.Ribbon" Version="9.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Contract\Contract.csproj" />
+    <ProjectReference Include="..\Line2D\Line2D.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Icons\color-palette.png" />
+    <Resource Include="Icons\export.png" />
+    <Resource Include="Icons\import.png" />
+    <Resource Include="Icons\load.png" />
+    <Resource Include="Icons\save.png" />
+    <Resource Include="Icons\save-as.png" />
+    <Resource Include="Icons\select.png" />
+  </ItemGroup>
+
+</Project>

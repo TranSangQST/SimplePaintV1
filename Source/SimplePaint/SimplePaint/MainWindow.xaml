@@ -1,0 +1,198 @@
+﻿<Fluent:RibbonWindow x:Class="SimplePaint.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SimplePaint"
+        xmlns:Fluent="clr-namespace:Fluent;assembly=Fluent"
+        mc:Ignorable="d"
+        Title="Simple Paint MainWindow" Height="450" Width="800"
+        Loaded="RibbonWindow_Loaded"
+        
+                     >
+    <Window.Resources>
+        <local:FluentColorConverter x:Key="FluentColorConverter"/>
+    </Window.Resources>
+    <DockPanel LastChildFill="True">
+        <!--<Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>-->
+
+        <Fluent:Ribbon DockPanel.Dock="Top" Panel.ZIndex="1">
+
+            <Fluent:RibbonTabItem Header="Home">
+               
+                <Fluent:RibbonGroupBox Header="File" Name="fileRbGB">
+                    <Fluent:Button Header="Save" Name="saveBtn" Icon="/Icons/save.png" Click="saveBtn_Click">
+                        <Fluent:Button.LargeIcon>
+                            <Image Source="/Icons/save.png" RenderOptions.BitmapScalingMode="HighQuality"></Image>
+                        </Fluent:Button.LargeIcon>
+                    </Fluent:Button>
+
+                    <Fluent:Button Header="Save As" Name="saveAsBtn" Icon="/Icons/save-as.png" Click="saveAsBtn_Click">
+                        <Fluent:Button.LargeIcon>
+                            <Image Source="/Icons/save-as.png" RenderOptions.BitmapScalingMode="HighQuality"></Image>
+                        </Fluent:Button.LargeIcon>
+                    </Fluent:Button>
+
+                    <Fluent:Button Header="Load" Name="loadBtn" Icon="/Icons/load.png" Click="loadBtn_Click">
+                        <Fluent:Button.LargeIcon>
+                            <Image Source="/Icons/load.png" RenderOptions.BitmapScalingMode="HighQuality"></Image>
+                        </Fluent:Button.LargeIcon>
+                    </Fluent:Button>
+
+                    <Fluent:Button Header="Export" Name="exportBtn" Icon="/Icons/export.png" Click="exportBtn_Click">
+                        <Fluent:Button.LargeIcon>
+                            <Image Source="/Icons/export.png" RenderOptions.BitmapScalingMode="HighQuality"></Image>
+                        </Fluent:Button.LargeIcon>
+                    </Fluent:Button>
+
+                    <Fluent:Button Header="Import" Name="importBtn" Icon="/Icons/import.png" Click="importBtn_Click">
+                        <Fluent:Button.LargeIcon>
+                            <Image Source="/Icons/import.png" RenderOptions.BitmapScalingMode="HighQuality"></Image>
+                        </Fluent:Button.LargeIcon>
+                    </Fluent:Button>
+
+                </Fluent:RibbonGroupBox>
+
+                <Fluent:RibbonGroupBox Header="Shape" Name="prototypesRbGbox">
+                </Fluent:RibbonGroupBox>
+
+                <Fluent:RibbonGroupBox Header="Tool" Name="toolRbGB">
+                    <Fluent:Button Header="Select" Name="selectBtn" Icon="/Icons/select.png" Click="selectBtn_Click">
+                        <Fluent:Button.LargeIcon>
+                            <Image Source="/Icons/select.png" RenderOptions.BitmapScalingMode="HighQuality"></Image>
+                        </Fluent:Button.LargeIcon>
+                    </Fluent:Button>
+                </Fluent:RibbonGroupBox>
+                
+                <Fluent:RibbonGroupBox Header="Color Picker">
+                    <Fluent:DropDownButton x:Name="outlineColorBtn" KeyTip="O" Header="Outline" LargeIcon="Icons/color-palette.png">
+                        <Fluent:ColorGallery x:Name="outlineColorPicker" IsAutomaticColorButtonVisible="True" IsNoColorButtonVisible="False" SelectedColorChanged="outlineColorPicker_SelectedColorChanged" SelectedColor="Red"/>
+                    </Fluent:DropDownButton>
+                    <Border Margin="10 10 20 10" BorderBrush="Black" BorderThickness="1">
+                        <!--<Rectangle Width="32" Height="32"></Rectangle>-->
+                        <Rectangle Width="32" Height="32" Fill="{Binding ElementName=outlineColorPicker, Path=SelectedColor, Converter={StaticResource FluentColorConverter}}"></Rectangle>
+                    </Border>
+                </Fluent:RibbonGroupBox>
+
+                <Fluent:RibbonGroupBox Header="Color Picker">
+                    <Fluent:DropDownButton x:Name="fillColorBtn" KeyTip="O" Header="Fill" LargeIcon="Icons/color-palette.png">
+                        <Fluent:ColorGallery x:Name="fillColorPicker" IsAutomaticColorButtonVisible="True" IsNoColorButtonVisible="False" SelectedColorChanged="fillColorPicker_SelectedColorChanged" SelectedColor="Transparent"/>
+                    </Fluent:DropDownButton>
+                    <Border Margin="10 10 20 10" BorderBrush="Black" BorderThickness="1">
+                        <Rectangle Width="32" Height="32" Fill="{Binding ElementName=fillColorPicker, Path=SelectedColor, Converter={StaticResource FluentColorConverter}}"></Rectangle>
+                    </Border>
+                </Fluent:RibbonGroupBox>
+
+                <Fluent:RibbonGroupBox>
+                    <Fluent:SplitButton 
+                        Header="Size" SizeDefinition="Large"
+                        Width="54">
+                        <Fluent:SplitButton.LargeIcon>
+                            <Rectangle Fill="Black"
+                                               Height="{Binding ElementName=strokeThicknessGallery, Path=SelectedItem.Thickness}"
+                                               Width="30"/>
+                        </Fluent:SplitButton.LargeIcon>
+
+                        <Fluent:Gallery
+                                    Name="strokeThicknessGallery"
+                                    ItemHeight="20"
+                                    Orientation="Vertical"
+                                    ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                                    SelectionChanged="strokeThicknessGallery_SelectionChanged"
+                                    >
+
+                            <Fluent:Gallery.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal"
+                                            VerticalAlignment="Center"
+                                            HorizontalAlignment="Center">
+                                        <Rectangle Fill="Black"
+                                               Height="{Binding Thickness}"
+                                               Width="30"/>
+                                        <TextBlock Width="20" Text="{Binding Thickness}" TextAlignment="Right"></TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </Fluent:Gallery.ItemTemplate>
+
+
+                        </Fluent:Gallery>
+                    </Fluent:SplitButton>
+                </Fluent:RibbonGroupBox>
+
+                <Fluent:RibbonGroupBox>
+                    <Fluent:SplitButton 
+                        Header="Style" SizeDefinition="Large"
+                        Width="54" VerticalAlignment="Center">
+                        <Fluent:SplitButton.LargeIcon>
+                            
+                            <Line 
+                                Stroke="Black"
+                                X1="0" Y1="15"  
+                                X2="50" Y2="15"  
+                                StrokeThickness = "3"
+                                StrokeDashArray="{Binding ElementName=strokeDashGallery, Path=SelectedItem.StrokeDashArray}"/>
+                        </Fluent:SplitButton.LargeIcon>
+
+                        <Fluent:Gallery
+                                    Name="strokeDashGallery"
+                                    ItemHeight="20"
+                                    Orientation="Vertical"
+                                    ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                                    SelectionChanged="strokeDashGallery_SelectionChanged"
+                           
+                            >
+
+                            <Fluent:Gallery.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal"
+                                            VerticalAlignment="Center"
+                                            HorizontalAlignment="Center">
+                                        <Line 
+                                               Stroke="Black"
+                                                X1="0" Y1="5"  
+                                                X2="50" Y2="5"  
+                                               StrokeThickness = "3"
+                                               StrokeDashArray="{Binding StrokeDashArray}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </Fluent:Gallery.ItemTemplate>
+
+
+                        </Fluent:Gallery>
+                    </Fluent:SplitButton>
+                </Fluent:RibbonGroupBox>
+
+
+            </Fluent:RibbonTabItem>
+
+        </Fluent:Ribbon>
+
+
+        <!--<StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" Name="editStackShapePanel">
+
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Name="prototypesStackPanel">
+
+            </StackPanel>
+        </StackPanel>-->
+
+        <Grid>
+            <Canvas x:Name="canvas" Background="Transparent" MouseLeftButtonDown="canvas_MouseLeftButtonDown">
+
+            </Canvas>
+            <Border Background="Transparent" MouseDown="canvas_MouseDown" 
+                MouseMove="canvas_MouseMove" 
+                MouseUp="canvas_MouseUp" Margin="0,10,0,-10">
+            </Border>
+        </Grid>
+
+    </DockPanel>
+
+</Fluent:RibbonWindow>

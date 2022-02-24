@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31624.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimplePaint", "SimplePaint\SimplePaint.csproj", "{FFFA972D-AEDD-4B9A-942A-B191501BB656}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contract", "Contract\Contract.csproj", "{289F2DCF-D944-4BA5-A26E-D1FAEB9C3FE8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Line2D", "Line2D\Line2D.csproj", "{26D9F68E-443E-4189-BE8B-4C5D9EA5A3BF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FFFA972D-AEDD-4B9A-942A-B191501BB656}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFFA972D-AEDD-4B9A-942A-B191501BB656}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFFA972D-AEDD-4B9A-942A-B191501BB656}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFFA972D-AEDD-4B9A-942A-B191501BB656}.Release|Any CPU.Build.0 = Release|Any CPU
+		{289F2DCF-D944-4BA5-A26E-D1FAEB9C3FE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{289F2DCF-D944-4BA5-A26E-D1FAEB9C3FE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{289F2DCF-D944-4BA5-A26E-D1FAEB9C3FE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{289F2DCF-D944-4BA5-A26E-D1FAEB9C3FE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26D9F68E-443E-4189-BE8B-4C5D9EA5A3BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26D9F68E-443E-4189-BE8B-4C5D9EA5A3BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26D9F68E-443E-4189-BE8B-4C5D9EA5A3BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26D9F68E-443E-4189-BE8B-4C5D9EA5A3BF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {47223991-9F74-42A3-B8BC-356BCF5876D2}
+	EndGlobalSection
+EndGlobal
